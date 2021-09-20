@@ -1,7 +1,7 @@
 - 👋 Hi, I’m @Vrajesh-sulakhe
 - 👀 I’m interested in software development web development AI Robotics 
 - 🌱 I’m currently learning python css js and many more
-- 💞️ I’m looking to collaborate with iskcon goa 
+- 💞️ I’m looking to collaborate with Iskcon-Goa 
 - 📫 How to reach me u can't reach me 
 
 <!---
