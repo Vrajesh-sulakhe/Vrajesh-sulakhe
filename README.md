@@ -1,7 +1,7 @@
-- 👋 Hi, I’m @Vrajesh-sulakhe
+- 👋 Hi, I’m @Vrajesh-sulakhe aka the ALPHA
 - 👀 I’m interested in software development web development AI Robotics 
 - 🌱 I’m currently learning python css js and many more
-- 💞️ I’m looking to collaborate with Iskcon-Goa 
+- 💞️ I’m looking to collaborate
 - 📫 You can't reach me 
 
 <!---
