@@ -42,11 +42,12 @@
 
 | Domain | Technologies |
 | :--- | :--- |
-| **Languages** | <img src="https://skillicons.dev/icons?i=py,ts,js,bash,html,css&theme=dark" alt="Python, TypeScript, JavaScript, Bash, HTML, CSS" height="36" /> |
+| **Languages** | <img src="https://skillicons.dev/icons?i=py,ts,js,c,cpp,bash,html,css&theme=dark" alt="Python, TypeScript, JavaScript, C, C++, Bash, HTML, CSS" height="36" /> |
 | **Frontend** | <img src="https://skillicons.dev/icons?i=react,nextjs,tailwind,vite,threejs&theme=dark" alt="React, Next.js, Tailwind CSS, Vite, Three.js" height="36" /> |
 | **Backend &amp; Data** | <img src="https://skillicons.dev/icons?i=nodejs,fastapi,prisma,sqlite,redis&theme=dark" alt="Node.js, FastAPI, Prisma, SQLite, Redis" height="36" /> |
 | **AI/ML &amp; Agent Stack** | <img src="https://skillicons.dev/icons?i=sklearn&theme=dark" alt="scikit-learn" height="36" /> &nbsp;<img src="https://img.shields.io/badge/MCP-Model_Context_Protocol-FE428E?style=for-the-badge" alt="MCP" height="30" /> <img src="https://img.shields.io/badge/Anthropic-141321?style=for-the-badge&logo=anthropic&logoColor=white" alt="Anthropic" height="30" /> <img src="https://img.shields.io/badge/Google_Gemini-8E75B2?style=for-the-badge&logo=googlegemini&logoColor=white" alt="Google Gemini" height="30" /> <img src="https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white" alt="Playwright" height="30" /> |
-| **Developer Tools** | <img src="https://skillicons.dev/icons?i=git,github,docker,linux,vscode,vercel,vitest&theme=dark" alt="Git, GitHub, Docker, Linux, VS Code, Vercel, Vitest" height="36" /> |
+| **Embedded &amp; IoT** | <img src="https://skillicons.dev/icons?i=arduino&theme=dark" alt="Arduino" height="36" /> <img src="./.github/assets/icons/esp32.svg" alt="ESP32 / Espressif" height="36" /> &nbsp;<img src="https://img.shields.io/badge/Arduino-00979C?style=for-the-badge&logo=arduino&logoColor=white" alt="Arduino" height="30" /> <img src="https://img.shields.io/badge/ESP32-E7352C?style=for-the-badge&logo=espressif&logoColor=white" alt="ESP32" height="30" /> |
+| **Developer Tools** | <img src="https://skillicons.dev/icons?i=git,github,docker,linux,vscode,vercel,vitest,arduino&theme=dark" alt="Git, GitHub, Docker, Linux, VS Code, Vercel, Vitest, Arduino" height="36" /> <img src="./.github/assets/icons/cursor.svg" alt="Cursor" height="36" /> <img src="./.github/assets/icons/antigravity.svg" alt="Google Antigravity" height="36" /> |
 
 </div>
 
