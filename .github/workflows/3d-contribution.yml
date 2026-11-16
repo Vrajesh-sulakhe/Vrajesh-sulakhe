@@ -1,0 +1,52 @@
+name: Generate 3D Contribution Graph
+
+on:
+  schedule:
+    - cron: "15 18 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/3d-contribution.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-output-branch
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    name: Generate 3D contribution SVGs
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Generate 3D contribution graphs
+        uses: yoshi389111/github-profile-3d-contrib@7d95e7d4cdc028dd1e1cbd957d65f35efb12ae39 # v0.9.3
+        env:
+          GITHUB_TOKEN: ${{ secrets.PROFILE_STATS_TOKEN || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+
+      - name: Stage 3D contribution SVGs
+        run: |
+          mkdir -p out/3d-contrib
+          cp profile-3d-contrib/profile-night-rainbow.svg out/3d-contrib/profile-night-rainbow.svg
+          cp profile-3d-contrib/profile-green-animate.svg out/3d-contrib/profile-green-animate.svg
+
+      - name: Publish 3D contribution SVGs to output branch
+        uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
+        with:
+          target_branch: output
+          build_dir: out
+          keep_history: true
+          allow_empty_commit: false
+          jekyll: false
+          commit_message: "chore(profile): update 3D contribution SVGs"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
