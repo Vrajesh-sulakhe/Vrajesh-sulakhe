@@ -1,3 +1,9 @@
+<p align="center">
+  <a href="https://ascii.rest/command-city/">
+    <img src="./.github/assets/command-city.svg" alt="command city, in ascii, from ascii.rest" width="100%" />
+  </a>
+</p>
+
 ## 💫 About Me
 
 <div align="center">
@@ -191,8 +197,8 @@
 <p align="center">
   <a href="https://ascii.rest/banner/">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://ascii.rest/banner/ALPHA.dark.svg?color=390000,ff0000&speed=fast&font=bold&shadow=ascii&fill=light&size=l&bg=000000" />
-      <img alt="ALPHA" src="https://ascii.rest/banner/ALPHA.svg?color=390000,ff0000&speed=fast&font=bold&shadow=ascii&fill=light&size=l&bg=000000" />
+      <source media="(prefers-color-scheme: dark)" srcset="https://ascii.rest/banner/ALPHA.dark.svg?color=580000,ff0000&speed=fast&font=mixed&shadow=ascii&fill=light&size=l&bg=240000" />
+      <img alt="ALPHA" src="https://ascii.rest/banner/ALPHA.svg?color=580000,ff0000&speed=fast&font=mixed&shadow=ascii&fill=light&size=l&bg=240000" />
     </picture>
   </a>
 </p>
