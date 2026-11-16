@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-output-branch
+  group: stats-cards-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -32,7 +32,7 @@ jobs:
         with:
           card: stats
           options: username=${{ github.repository_owner }}&show_icons=true&include_all_commits=true&count_private=true&theme=radical&hide_border=true&bg_color=141321&title_color=FE428E&icon_color=F8D847&text_color=A9FEF7&ring_color=FE428E
-          path: out/stats/stats.svg
+          path: generated-stats/stats.svg
           token: ${{ secrets.PROFILE_STATS_TOKEN || secrets.GITHUB_TOKEN }}
           fail_on_error: true
 
@@ -41,18 +41,48 @@ jobs:
         with:
           card: top-langs
           options: username=${{ github.repository_owner }}&layout=compact&langs_count=8&theme=radical&hide_border=true&bg_color=141321&title_color=FE428E&text_color=A9FEF7
-          path: out/stats/top-langs.svg
+          path: generated-stats/top-langs.svg
           token: ${{ secrets.PROFILE_STATS_TOKEN || secrets.GITHUB_TOKEN }}
           fail_on_error: true
 
-      - name: Publish stats SVGs to output branch
-        uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
+      - name: Checkout output branch
+        id: checkout_output
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        continue-on-error: true
         with:
-          target_branch: output
-          build_dir: out
-          keep_history: true
-          allow_empty_commit: false
-          jekyll: false
-          commit_message: "chore(profile): update stats and top-langs SVGs"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: output
+          path: _output
+
+      - name: Initialize workspace if output branch missing
+        if: steps.checkout_output.outcome != 'success'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: _output
+
+      - name: Publish stats SVGs to output branch
+        run: |
+          cd _output
+          if ! git rev-parse --verify origin/output >/dev/null 2>&1; then
+            git checkout --orphan output
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+          touch .nojekyll
+          mkdir -p stats
+          cp ../generated-stats/stats.svg stats/stats.svg
+          cp ../generated-stats/top-langs.svg stats/top-langs.svg
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .nojekyll stats/stats.svg stats/top-langs.svg
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "chore(profile): update stats and top-langs SVGs"
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:output; then
+              exit 0
+            fi
+            git fetch origin output && git rebase origin/output
+            sleep 2
+          done
+          exit 1

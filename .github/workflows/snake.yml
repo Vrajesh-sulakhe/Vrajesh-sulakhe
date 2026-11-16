@@ -14,7 +14,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: publish-output-branch
+  group: snake-${{ github.ref }}
   cancel-in-progress: false
 
 jobs:
@@ -33,14 +33,43 @@ jobs:
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
 
-      - name: Publish snake SVGs to output branch
-        uses: crazy-max/ghaction-github-pages@1d6ee9b181a81033a16bd707a1401afa978daab4 # v5.0.0
+      - name: Checkout output branch
+        id: checkout_output
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        continue-on-error: true
         with:
-          target_branch: output
-          build_dir: dist
-          keep_history: true
-          allow_empty_commit: false
-          jekyll: false
-          commit_message: "chore(profile): update contribution snake SVGs"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ref: output
+          path: _output
+
+      - name: Initialize workspace if output branch missing
+        if: steps.checkout_output.outcome != 'success'
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          path: _output
+
+      - name: Publish snake SVGs to output branch
+        run: |
+          cd _output
+          if ! git rev-parse --verify origin/output >/dev/null 2>&1; then
+            git checkout --orphan output
+            git rm -rf . >/dev/null 2>&1 || true
+          fi
+          touch .nojekyll
+          cp ../dist/github-snake.svg ./github-snake.svg
+          cp ../dist/github-snake-dark.svg ./github-snake-dark.svg
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .nojekyll github-snake.svg github-snake-dark.svg
+          if git diff --cached --quiet; then
+            echo "No changes to publish."
+            exit 0
+          fi
+          git commit -m "chore(profile): update contribution snake SVGs"
+          for attempt in 1 2 3 4 5; do
+            if git push origin HEAD:output; then
+              exit 0
+            fi
+            git fetch origin output && git rebase origin/output
+            sleep 2
+          done
+          exit 1
