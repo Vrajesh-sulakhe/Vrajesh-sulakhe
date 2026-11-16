@@ -187,3 +187,12 @@
     <img src="https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black" alt="Buy Me A Coffee" />
   </a>
 </p>
+
+<p align="center">
+  <a href="https://ascii.rest/banner/">
+    <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="https://ascii.rest/banner/ALPHA.dark.svg?color=390000,ff0000&speed=fast&font=bold&shadow=ascii&fill=light&size=l&bg=000000" />
+      <img alt="ALPHA" src="https://ascii.rest/banner/ALPHA.svg?color=390000,ff0000&speed=fast&font=bold&shadow=ascii&fill=light&size=l&bg=000000" />
+    </picture>
+  </a>
+</p>
