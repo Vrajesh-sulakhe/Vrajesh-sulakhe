@@ -8,7 +8,7 @@
 
 <div align="center">
   <a href="https://github.com/Vrajesh-sulakhe">
-    <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=23&duration=3200&pause=1000&color=FE428E&center=true&vCenter=true&width=720&height=48&lines=Vrajesh+Sulakhe+%E2%80%94+AI%2FML+Engineer+%26+Systems+Builder;Agentic+Systems+%C2%B7+MCP+Infrastructure+%C2%B7+Full-Stack+AI;Turning+Experimental+AI+Into+Shipped+Products" alt="Vrajesh Sulakhe — AI/ML Engineer & Systems Builder" />
+    <img src="./.github/assets/hero-typing.svg" alt="Vrajesh Sulakhe — AI/ML Engineer & Systems Builder" />
   </a>
 </div>
 
