@@ -197,8 +197,8 @@
 <p align="center">
   <a href="https://ascii.rest/banner/">
     <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://ascii.rest/banner/ALPHA.dark.svg?color=580000,ff0000&speed=fast&font=mixed&shadow=ascii&fill=light&size=l&bg=240000" />
-      <img alt="ALPHA" src="https://ascii.rest/banner/ALPHA.svg?color=580000,ff0000&speed=fast&font=mixed&shadow=ascii&fill=light&size=l&bg=240000" />
+      <source media="(prefers-color-scheme: dark)" srcset="./.github/assets/alpha-dark.svg" />
+      <img alt="ALPHA" src="./.github/assets/alpha-light.svg" />
     </picture>
   </a>
 </p>
